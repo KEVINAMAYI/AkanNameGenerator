@@ -66,73 +66,86 @@
         console.log(err);
     }
 
+ /*on click submit button process the ghanian name
+        ===========================================================*/
+$("#submit-button").click(function(event) {
+    
+
+    event.preventDefault();
+    let firstname = document.getElementById('firstname').value;
+    let lastname = document.getElementById('lastname').value;
+    let birthDate = document.getElementById('birthdate').value;
+    let gender = document.getElementById('gender').value;
+
+    
+    const birthDaydate = new Date(birthDate);
+    const year = birthDaydate.getUTCFullYear();
+    const month = (birthDaydate.getUTCMonth()) + 1;
+    const day = birthDaydate.getUTCDate();
+    const yeartoString =  year.toString();
+    const CC = parseInt(yeartoString.substring(0, 2));
+    const YY = parseInt(yeartoString.substring(2,4));
+    let dayName = "";
+
+    let dayOfTheWeek =Math.floor(( ((CC/4) -2*CC-1) + ((5*YY/4) ) + ((26*(month+1)/10)) + day ) % 7);
+    
+    switch (dayOfTheWeek) {
+        case 1:
+            dayName = "Sunday";
+            break;
+        case 2:
+            dayName = "Monday";
+            break;
+        case 3:
+            dayName = "Tuesday";
+            break;
+        case 4:
+            dayName = "Wednesday";
+            break;
+        case 5:
+            dayName = "Thursday";
+            break;
+        case 6:
+            dayName = "Friday";
+            break;
+        case 0:
+            dayName = "Saturday";
+            break;
+        default:
+           console.log(`Sorry, Please check your input data.`);
+           break;
+      }
+    
+        
+        if((firstname !== "") && (lastname !== "") && (dayName !== ""))
+        {
+
+            let ghanianName = generateAkanNames(dayName,gender);
+            swal({
+                title: "Success !",
+                text: "Hi "+ firstname + " " +lastname +" You were born on "+ dayName +" And Your Ghanian Name is " + ghanianName,
+                icon: "success",
+            });
+        }
+        else
+        {
+            
+            swal({
+                title: "Error !",
+                text: "Hi "+ firstname + " " +lastname +" Please Enter correct details",
+                icon: "error",
+            });
+        }
+        
+
+
+});
+
+
 })(jQuery);
 
 
 
-function getBirthDay()
-{
-    
-        let firstname = document.getElementById('firstname').value;
-        let lastname = document.getElementById('lastname').value;
-        let birthDate = document.getElementById('birthdate').value;
-        let gender = document.getElementById('gender').value;
-        let email = document.getElementById('email').value;
-        let phoneNumber = document.getElementById('phonenumber').value;
-        
-        const birthDaydate = new Date(birthDate);
-        const year = birthDaydate.getUTCFullYear();
-        const month = (birthDaydate.getUTCMonth()) + 1;
-        const day = birthDaydate.getUTCDate();
-        const yeartoString =  year.toString();
-        const CC = parseInt(yeartoString.substring(0, 2));
-        const YY = parseInt(yeartoString.substring(2,4));
-        let dayName = "";
-
-        dayOfTheWeek =Math.floor(( ((CC/4) -2*CC-1) + ((5*YY/4) ) + ((26*(month+1)/10)) + day ) % 7);
-        
-        switch (dayOfTheWeek) {
-            case 1:
-                dayName = "Sunday";
-                break;
-            case 2:
-                dayName = "Monday";
-                break;
-            case 3:
-                dayName = "Tuesday";
-                break;
-            case 4:
-                dayName = "Wednesday";
-                break;
-            case 5:
-                dayName = "Thursday";
-                break;
-            case 6:
-                dayName = "Friday";
-                break;
-            case 0:
-                dayName = "Saturday";
-                break;
-            default:
-               console.log(`Sorry, Please check your input data.`);
-          }
-
-        ghanianName = generateAkanNames(dayName,gender);
-        alert("Hi " + firstname + " "+ lastname + " You were born on "+ dayName +" And Your Ghanian Name is " + ghanianName);
-
-        // console.log({
-        //     birthDate,
-        //     birthDaydate,
-        //     dayOfTheWeek,
-        //     year,
-        //     month,
-        //     day,
-        //     CC,
-        //     YY
-        // });
-
-    
-}
 
 
 function generateAkanNames(dayName,gender)
