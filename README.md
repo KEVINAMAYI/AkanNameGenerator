@@ -1,6 +1,6 @@
 # Akan Name Generator
 
-![Alt text](images/akanmainpage.png?raw=true "Optional Title")
+![Alt text](images/project-photo.png?raw=true "Optional Title")
 
 
 #### Akan Name Generator, 2021-12-12
