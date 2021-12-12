@@ -76,39 +76,30 @@ $("#submit-button").click(function(event) {
     let lastname = document.getElementById('lastname').value;
     let birthDate = document.getElementById('birthdate').value;
     let gender = document.getElementById('gender').value;
-
-    
     const birthDaydate = new Date(birthDate);
-    const year = birthDaydate.getUTCFullYear();
-    const month = (birthDaydate.getUTCMonth()) + 1;
-    const day = birthDaydate.getUTCDate();
-    const yeartoString =  year.toString();
-    const CC = parseInt(yeartoString.substring(0, 2));
-    const YY = parseInt(yeartoString.substring(2,4));
+    const dayOfTheWeek = birthDaydate.getDay();
     let dayName = "";
-
-    let dayOfTheWeek =Math.floor(( ((CC/4) -2*CC-1) + ((5*YY/4) ) + ((26*(month+1)/10)) + day ) % 7);
-    
+        
     switch (dayOfTheWeek) {
-        case 1:
+        case 0:
             dayName = "Sunday";
             break;
-        case 2:
+        case 1:
             dayName = "Monday";
             break;
-        case 3:
+        case 2:
             dayName = "Tuesday";
             break;
-        case 4:
+        case 3:
             dayName = "Wednesday";
             break;
-        case 5:
+        case 4:
             dayName = "Thursday";
             break;
-        case 6:
+        case 5:
             dayName = "Friday";
             break;
-        case 0:
+        case 6:
             dayName = "Saturday";
             break;
         default:
