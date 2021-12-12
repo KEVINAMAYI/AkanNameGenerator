@@ -8,7 +8,7 @@
             "showDropdowns": true,
             "autoUpdateInput": false,
             locale: {
-                format: 'DD/MM/YYYY'
+                format: 'YYYY-MM-DD'
             },
         });
     
@@ -21,7 +21,7 @@
     
         $(myCalendar).on('apply.daterangepicker',function(ev, picker){
             isClick = 0;
-            $(this).val(picker.startDate.format('DD/MM/YYYY'));
+            $(this).val(picker.startDate.format('YYYY-MM-DD'));
     
         });
     
@@ -65,6 +65,108 @@
     } catch (err) {
         console.log(err);
     }
-    
 
 })(jQuery);
+
+
+
+function getBirthDay()
+{
+    
+        let firstname = document.getElementById('firstname').value;
+        let lastname = document.getElementById('lastname').value;
+        let birthDate = document.getElementById('birthdate').value;
+        let gender = document.getElementById('gender').value;
+        let email = document.getElementById('email').value;
+        let phoneNumber = document.getElementById('phonenumber').value;
+        
+        const birthDaydate = new Date(birthDate);
+        const year = birthDaydate.getUTCFullYear();
+        const month = (birthDaydate.getUTCMonth()) + 1;
+        const day = birthDaydate.getUTCDate();
+        const yeartoString =  year.toString();
+        const CC = parseInt(yeartoString.substring(0, 2));
+        const YY = parseInt(yeartoString.substring(2,4));
+        let dayName = "";
+
+        dayOfTheWeek =Math.floor(( ((CC/4) -2*CC-1) + ((5*YY/4) ) + ((26*(month+1)/10)) + day ) % 7);
+        
+        switch (dayOfTheWeek) {
+            case 1:
+                dayName = "Sunday";
+                break;
+            case 2:
+                dayName = "Monday";
+                break;
+            case 3:
+                dayName = "Tuesday";
+                break;
+            case 4:
+                dayName = "Wednesday";
+                break;
+            case 5:
+                dayName = "Thursday";
+                break;
+            case 6:
+                dayName = "Friday";
+                break;
+            case 0:
+                dayName = "Saturday";
+                break;
+            default:
+               console.log(`Sorry, Please check your input data.`);
+          }
+
+        ghanianName = generateAkanNames(dayName,gender);
+        alert("Hi " + firstname + " "+ lastname + " You were born on "+ dayName +" And Your Ghanian Name is " + ghanianName);
+
+        // console.log({
+        //     birthDate,
+        //     birthDaydate,
+        //     dayOfTheWeek,
+        //     year,
+        //     month,
+        //     day,
+        //     CC,
+        //     YY
+        // });
+
+    
+}
+
+
+function generateAkanNames(dayName,gender)
+{
+    
+      // an object to hold and return the ghanian day names
+      ghanianDayNames = {
+          Male:
+          {
+            Sunday: "Kwasi",
+            Monday: "Kwadwo",
+            Tuesday: "Kwabena",
+            Wednesday: "Kwaku",
+            Thursday:  "Yaw",
+            Friday: "Kofi",
+            Saturday: "Kwame"
+
+          },
+          Female:
+          {
+
+            Sunday: "Akosua",
+            Monday: "Adwoa",
+            Tuesday: "Abenaa",
+            Wednesday: "Akua",
+            Thursday:  "Yaa",
+            Friday: "Afua",
+            Saturday: "Ama"
+              
+          }
+      }
+
+      return ghanianDayNames[gender][dayName];
+    
+}
+
+
