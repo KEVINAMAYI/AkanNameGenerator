@@ -6,7 +6,7 @@
 #### Akan Name Generator, 2021-12-12
 #### By **Kevin Amayi Musungu**
 ## Description
-Akan Name Generator is a web application for generating Ghanian Names based on someone's birthday. You entered your details, and then the application will process your birthday and your Akan Name (Ghanian Name based on your birthday) 
+Akan Name Generator is a web application for generating Ghanian Names based on someone's birthday. You entered your details, and then the application will process your birthday and your Akan Name (Ghanian Name based on your birthday), It also validates your entry.
 
 ## Setup/Installation Requirements
 * Go to https://github.com/KEVINAMAYI/AkanNameGenerator
