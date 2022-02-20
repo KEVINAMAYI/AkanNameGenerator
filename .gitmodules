@@ -1,0 +1,3 @@
+[submodule "testfolder"]
+	path = testfolder
+	url = git@github.com:KEVINAMAYI/AkanNameGenerator.git
