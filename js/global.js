@@ -114,7 +114,7 @@ $("#submit-button").click(function(event) {
             let ghanianName = generateAkanNames(dayName,gender);
             swal({
                 title: "Success !",
-                text: "Hi "+ firstname + " " +lastname +" You were born on "+ dayName +" And Your Ghanian Name is " + ghanianName,
+                text: "Hi Mr/Mrs"+ firstname + " " +lastname +" You were born on "+ dayName +" And Your Ghanian Name is " + ghanianName,
                 icon: "success",
             });
         }
