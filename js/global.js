@@ -110,7 +110,8 @@ $("#submit-button").click(function(event) {
         
         if((firstname !== "") && (lastname !== "") && (dayName !== ""))
         {
-
+            
+            //get the ghanian name
             let ghanianName = generateAkanNames(dayName,gender);
             swal({
                 title: "Success !",
